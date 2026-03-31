@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Santosh Bhavan - Class 10</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --p: #5B8FB9;
+            --pl: #8BB8D6;
+            --pd: #4A7A9E;
+            --s: #2D4059;
+            --a: #6EC6A0;
+            --aw: #E8C98A;
+            --bg: #F5F7FA;
+            --card: #fff;
+            --txt: #2D4059;
+            --t2: #8E9AAF;
+            --bdr: #E4E8EE;
+            --suc: #6EC6A0;
+            --dan: #D98A8A;
+            --sh: 0 2px 12px rgba(45, 64, 89, .06);
+            --r: 14px
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--txt);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden
+        }
+
+        /* ===== SPLASH ===== */
+        .splash {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: linear-gradient(155deg, #1e2d42 0%, #2D4059 30%, #3d6080 65%, #5B8FB9 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.2s ease, visibility 1.2s ease
+        }
+
+        .splash.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none
+        }
+
+        .splash svg {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 4px 20px rgba(91, 143, 185, .3))
+        }
+
+        .dp {
+            fill: none;
+            stroke: rgba(255, 255, 255, .85);
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: var(--l);
+            stroke-dashoffset: var(--l);
+            animation: drawP var(--d) var(--dl) ease-out forwards
+        }
+
+        .dp2 {
+            fill: none;
+            stroke: rgba(255, 255, 255, .4);
+            stroke-width: 1;
+            stroke-linecap: round;
+            stroke-dasharray: var(--l);
+            stroke-dashoffset: var(--l);
+            animation: drawP var(--d) var(--dl) ease-out forwards
+        }
+
+        @keyframes drawP {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+
+        .sp-glow {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(91, 143, 185, .15) 0%, transparent 70%);
+            animation: pulse2 3s ease infinite
+        }
+
+        @keyframes pulse2 {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: .5
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: .8
+            }
+        }
+
+        .sp-t {
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 800;
+            opacity: 0;
+            animation: fadeUp .9s ease 3.8s forwards;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, .15)
+        }
+
+        .sp-s {
+            color: rgba(255, 255, 255, .7);
+            font-size: .88rem;
+            opacity: 0;
+            animation: fadeUp .8s ease 4.2s forwards;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            font-weight: 400
+        }
+
+        .sp-bar {
+            width: 130px;
+            height: 3px;
+            background: rgba(255, 255, 255, .15);
+            border-radius: 2px;
+            margin-top: 28px;
+            opacity: 0;
+            animation: fadeIn .3s ease 4.5s forwards;
+            overflow: hidden
+        }
+
+        .sp-fill {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, .6), #fff);
+            border-radius: 2px;
+            animation: fillB 1.1s ease 4.6s forwards
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes fillB {
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(.92)
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0
+            }
+
+            100% {
+                background-position: 200% 0
+            }
+        }
+
+        /* ===== HEADER ===== */
+        .hdr {
+            background: linear-gradient(135deg, var(--s) 0%, #3d5a7a 100%);
+            color: #fff;
+            padding: 15px 20px 13px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(45, 64, 89, .12)
+        }
+
+        .hdr h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .8px
+        }
+
+        .hdr small {
+            font-size: .7rem;
+            opacity: .7;
+            display: block;
+            margin-top: 2px
+        }
+
+        /* ===== BOTTOM NAV ===== */
+        .bnav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 0 max(env(safe-area-inset-bottom), 8px);
+            box-shadow: 0 -1px 8px rgba(0, 0, 0, .04);
+            z-index: 100;
+            border-top: 1px solid var(--bdr)
+        }
+
+        .nb {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 20px;
+            border: none;
+            background: none;
+            color: var(--t2);
+            font-size: .66rem;
+            cursor: pointer;
+            transition: all .3s;
+            font-family: inherit;
+            position: relative
+        }
+
+        .nb.act {
+            color: var(--p)
+        }
+
+        .nb .ic {
+            font-size: 1.3rem;
+            margin-bottom: 2px;
+            transition: transform .3s
+        }
+
+        .nb.act .ic {
+            transform: translateY(-2px) scale(1.05)
+        }
+
+        .nb.act::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background: var(--p);
+            border-radius: 0 0 3px 3px
+        }
+
+        /* ===== MAIN ===== */
+        .main {
+            padding: 16px;
+            padding-bottom: 88px;
+            max-width: 820px;
+            margin: 0 auto;
+            animation: fadeIn .4s ease
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: var(--card);
+            border-radius: var(--r);
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: var(--sh);
+            border: 1px solid rgba(0, 0, 0, .02);
+            transition: all .25s ease;
+            animation: slideIn .4s ease both
+        }
+
+        .card.click {
+            cursor: pointer
+        }
+
+        .card.click:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(45, 64, 89, .1)
+        }
+
+        .card.click:active {
+            transform: translateY(0)
+        }
+
+        .card-h {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px
+        }
+
+        .card-t {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--s)
+        }
+
+        .card-d {
+            font-size: .7rem;
+            color: var(--t2);
+            background: #F0F2F5;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-weight: 500
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit
+        }
+
+        .btn:active {
+            transform: scale(.96)
+        }
+
+        .btn-p {
+            background: linear-gradient(135deg, var(--p), var(--pd));
+            color: #fff;
+            box-shadow: 0 3px 12px rgba(91, 143, 185, .25)
+        }
+
+        .btn-p:hover {
+            box-shadow: 0 5px 18px rgba(91, 143, 185, .35);
+            transform: translateY(-1px)
+        }
+
+        .btn-s {
+            background: var(--s);
+            color: #fff
+        }
+
+        .btn-a {
+            background: var(--a);
+            color: #fff
+        }
+
+        .btn-d {
+            background: var(--dan);
+            color: #fff
+        }
+
+        .btn-o {
+            background: none;
+            border: 1.5px solid var(--bdr);
+            color: var(--t2)
+        }
+
+        .btn-o:hover {
+            border-color: var(--p);
+            color: var(--p)
+        }
+
+        .btn-sm {
+            padding: 7px 14px;
+            font-size: .76rem
+        }
+
+        .btn-bl {
+            width: 100%;
+            justify-content: center
+        }
+
+        /* ===== FAB ===== */
+        .fab {
+            position: fixed;
+            bottom: 72px;
+            right: 16px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--p), var(--pd));
+            color: #fff;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(91, 143, 185, .35);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s ease
+        }
+
+        .fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 22px rgba(91, 143, 185, .45)
+        }
+
+        .fab:active {
+            transform: scale(.95)
+        }
+
+        /* ===== FORM ===== */
+        .fg {
+            margin-bottom: 14px
+        }
+
+        .fg label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: .8rem;
+            color: var(--s)
+        }
+
+        .fc {
+            width: 100%;
+            padding: 10px 13px;
+            border: 1.5px solid var(--bdr);
+            border-radius: 10px;
+            font-size: .86rem;
+            transition: all .25s ease;
+            background: #FAFBFC;
+            font-family: inherit;
+            color: var(--txt)
+        }
+
+        .fc:focus {
+            outline: none;
+            border-color: var(--p);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(91, 143, 185, .08)
+        }
+
+        select.fc {
+            cursor: pointer;
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%238E9AAF' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 30px
+        }
+
+        textarea.fc {
+            resize: vertical;
+            min-height: 55px
+        }
+
+        /* ===== TAGS ===== */
+        .tag {
+            display: inline-block;
+            padding: 3px 9px;
+            border-radius: 10px;
+            font-size: .68rem;
+            font-weight: 600;
+            letter-spacing: .3px
+        }
+
+        /* ===== BACK BTN ===== */
+        .back {
+            background: none;
+            border: none;
+            color: var(--p);
+            font-size: .85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 14px;
+            padding: 4px 0;
+            font-family: inherit;
+            transition: all .2s
+        }
+
+        .back:hover {
+            color: var(--pd);
+            gap: 8px
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .stit {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--s);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 7px
+        }
+
+        /* ===== SUB TABS ===== */
+        .stabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding-bottom: 3px;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .stab {
+            padding: 8px 16px;
+            border: 1.5px solid var(--bdr);
+            border-radius: 20px;
+            background: #fff;
+            cursor: pointer;
+            font-size: .76rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all .25s;
+            color: var(--t2);
+            font-family: inherit
+        }
+
+        .stab:hover {
+            border-color: var(--pl);
+            color: var(--p)
+        }
+
+        .stab.act {
+            background: var(--p);
+            color: #fff;
+            border-color: var(--p);
+            box-shadow: 0 2px 8px rgba(91, 143, 185, .2)
+        }
+
+        /* ===== FILTER BAR ===== */
+        .fbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 14px;
+            align-items: center;
+            animation: slideIn .3s ease
+        }
+
+        .fbar .fc {
+            margin: 0;
+            flex: 1
+        }
+
+        .fbar .btn {
+            flex-shrink: 0
+        }
+
+        /* ===== PERIOD CARD ===== */
+        .pc {
+            background: #FAFBFC;
+            border-radius: 12px;
+            padding: 13px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--p);
+            transition: all .25s;
+            animation: slideIn .4s ease both
+        }
+
+        .pn {
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: .85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        /* ===== HOMEWORK ITEM ===== */
+        .hwi {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 5px;
+            border: 1px solid var(--bdr);
+            transition: all .25s;
+            cursor: pointer
+        }
+
+        .hwi:hover {
+            border-color: var(--pl);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .03)
+        }
+
+        .hwc {
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--bdr);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s;
+            margin-top: 2px;
+            font-size: .7rem
+        }
+
+        .hwc.done {
+            background: var(--suc);
+            border-color: var(--suc);
+            color: #fff;
+            animation: scaleIn .3s ease
+        }
+
+        .hwt.comp {
+            text-decoration: line-through;
+            opacity: .45
+        }
+
+        /* ===== TABLE ===== */
+        .tw {
+            overflow-x: auto;
+            border-radius: var(--r);
+            box-shadow: var(--sh);
+            margin-bottom: 14px;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .rtbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .74rem;
+            min-width: 600px
+        }
+
+        .rtbl th {
+            background: var(--s);
+            color: #fff;
+            padding: 10px 5px;
+            text-align: center;
+            font-weight: 600;
+            font-size: .7rem;
+            letter-spacing: .3px
+        }
+
+        .rtbl td {
+            padding: 8px 5px;
+            text-align: center;
+            border-bottom: 1px solid var(--bdr);
+            background: #fff;
+            transition: background .2s
+        }
+
+        .rtbl tr:nth-child(even) td {
+            background: #FAFBFC
+        }
+
+        .rtbl tr:hover td {
+            background: #F0F4F8
+        }
+
+        .rtbl th:first-child {
+            border-radius: var(--r) 0 0 0
+        }
+
+        .rtbl th:last-child {
+            border-radius: 0 var(--r) 0 0
+        }
+
+        /* ===== STUDENT ITEM ===== */
+        .si {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 14px;
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 7px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .025);
+            border: 1px solid rgba(0, 0, 0, .02);
+            animation: slideIn .3s ease both;
+            transition: all .2s
+        }
+
+        .si:hover {
+            box-shadow: 0 3px 12px rgba(0, 0, 0, .05)
+        }
+
+        .si-info {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .si-av {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--p), var(--pl));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: .78rem
+        }
+
+        .si-n {
+            font-weight: 600;
+            font-size: .85rem
+        }
+
+        .si-d {
+            font-size: .7rem;
+            color: var(--t2)
+        }
+
+        .dbtn {
+            background: none;
+            border: none;
+            color: var(--dan);
+            font-size: .88rem;
+            cursor: pointer;
+            padding: 4px;
+            opacity: .5;
+            transition: opacity .2s
+        }
+
+        .dbtn:hover {
+            opacity: 1
+        }
+
+        /* ===== MODAL ===== */
+        .mo {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 64, 89, .35);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px
+        }
+
+        .mo.show {
+            display: flex
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 18px;
+            padding: 22px;
+            width: 100%;
+            max-width: 440px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: scaleIn .35s ease
+        }
+
+        .modal h3 {
+            margin-bottom: 16px;
+            color: var(--s);
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--s);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 22px;
+            z-index: 9999;
+            font-size: .8rem;
+            animation: fadeUp .3s ease;
+            box-shadow: 0 4px 18px rgba(45, 64, 89, .2);
+            white-space: nowrap
+        }
+
+        /* ===== MARKS CARD ===== */
+        .mc {
+            background: var(--card);
+            border-radius: var(--r);
+            padding: 14px;
+            margin-bottom: 10px;
+            box-shadow: var(--sh);
+            animation: slideIn .3s ease both;
+            transition: all .25s
+        }
+
+        .mc:hover {
+            box-shadow: 0 4px 16px rgba(45, 64, 89, .08)
+        }
+
+        .mc-h {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .mc-n {
+            font-weight: 700;
+            color: var(--s);
+            font-size: .88rem
+        }
+
+        .mc-r {
+            font-size: .7rem;
+            color: var(--t2);
+            background: #F0F2F5;
+            padding: 2px 8px;
+            border-radius: 8px
+        }
+
+        .mg {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 7px
+        }
+
+        .mgi {
+            text-align: center
+        }
+
+        .mgi label {
+            font-size: .65rem;
+            color: var(--t2);
+            display: block;
+            margin-bottom: 3px;
+            font-weight: 600
+        }
+
+        .mgi input {
+            width: 100%;
+            padding: 7px 4px;
+            border: 1.5px solid var(--bdr);
+            border-radius: 8px;
+            text-align: center;
+            font-size: .85rem;
+            font-family: inherit;
+            transition: all .25s
+        }
+
+        .mgi input:focus {
+            outline: none;
+            border-color: var(--p);
+            box-shadow: 0 0 0 3px rgba(91, 143, 185, .1);
+            background: #fff
+        }
+
+        /* ===== STATS ===== */
+        .g3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 14px
+        }
+
+        .stat {
+            background: #fff;
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+            box-shadow: var(--sh)
+        }
+
+        .stat-n {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--p)
+        }
+
+        .stat-l {
+            font-size: .65rem;
+            color: var(--t2);
+            margin-top: 2px
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .pbar {
+            height: 5px;
+            background: #E8ECF1;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 6px
+        }
+
+        .pfill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width .8s ease
+        }
+
+        /* ===== SYLLABUS POINTS ===== */
+        .syl-pts {
+            margin-bottom: 6px;
+            min-height: 5px
+        }
+
+        .syl-pt {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            background: #F5F7FA;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            font-size: .83rem;
+            animation: slideIn .2s ease
+        }
+
+        .syl-pt .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0
+        }
+
+        .syl-pt span {
+            flex: 1
+        }
+
+        .syl-pt .xb {
+            background: none;
+            border: none;
+            color: var(--dan);
+            cursor: pointer;
+            font-size: .75rem;
+            opacity: .4;
+            transition: opacity .2s;
+            padding: 2px
+        }
+
+        .syl-pt .xb:hover {
+            opacity: 1
+        }
+
+        /* ===== BADGE ===== */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: .67rem;
+            font-weight: 600
+        }
+
+        .bg-g {
+            background: #E8F5E9;
+            color: #2E7D32
+        }
+
+        .bg-w {
+            background: #FFF8E1;
+            color: #E65100
+        }
+
+        .bg-r {
+            background: #FFEBEE;
+            color: #C62828
+        }
+
+        .bg-b {
+            background: #E3F2FD;
+            color: #1565C0
+        }
+
+        /* ===== EMPTY ===== */
+        .empty {
+            text-align: center;
+            padding: 45px 20px;
+            color: var(--t2)
+        }
+
+        .empty .eic {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            opacity: .6
+        }
+
+        .empty p {
+            font-size: .86rem;
+            line-height: 1.6
+        }
+
+        .empty small {
+            font-size: .76rem;
+            opacity: .7
+        }
+
+        /* ===== SYLLABUS VIEW ===== */
+        .syl-v {
+            padding: 10px 12px;
+            background: #FAFBFC;
+            border-radius: 10px;
+            margin-bottom: 7px;
+            border-left: 3px solid var(--p)
+        }
+
+        .syl-v-h {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px
+        }
+
+        .syl-v-n {
+            font-weight: 600;
+            font-size: .82rem
+        }
+
+        .syl-v-pts {
+            list-style: none;
+            padding: 0
+        }
+
+        .syl-v-pts li {
+            font-size: .82rem;
+            padding: 3px 0 3px 15px;
+            position: relative;
+            color: var(--txt)
+        }
+
+        .syl-v-pts li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            height: 1px;
+            background: var(--bdr);
+            margin: 14px 0
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 3px;
+            height: 3px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 2px
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(min-width:768px) {
+            .main {
+                padding: 22px 28px;
+                padding-bottom: 88px
+            }
+
+            .mg {
+                grid-template-columns: repeat(6, 1fr)
+            }
+
+            .hdr h1 {
+                font-size: 1.35rem
+            }
+
+            .splash svg {
+                width: 180px;
+                height: 180px
+            }
+
+            .sp-t {
+                font-size: 2.6rem
+            }
+        }
+
+        @media(max-width:380px) {
+            .g3 {
+                gap: 5px
+            }
+
+            .stat {
+                padding: 9px 5px
+            }
+
+            .stat-n {
+                font-size: 1.1rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== SPLASH SCREEN ===== -->
+    <div class="splash" id="splash">
+        <div class="sp-glow"></div>
+        <svg viewBox="0 0 140 140" fill="none">
+            <!-- Outer circle -->
+            <circle class="dp" cx="70" cy="70" r="64" style="--l:403;--d:2s;--dl:0s" stroke-width="1.2" />
+            <!-- Inner decorative arc -->
+            <path class="dp2" d="M25,70 A45,45 0 0,1 115,70" style="--l:145;--d:1.5s;--dl:0.5s" />
+            <path class="dp2" d="M115,72 A45,45 0 0,1 25,72" style="--l:145;--d:1.5s;--dl:0.8s" />
+            <!-- Left book cover -->
+            <path class="dp" d="M36,92 L36,50 C36,46 48,40 68,38 L68,86 C50,88 38,92 36,92 Z"
+                style="--l:180;--d:1.2s;--dl:1.5s" />
+            <!-- Right book cover -->
+            <path class="dp" d="M104,92 L104,50 C104,46 92,40 72,38 L72,86 C90,88 102,92 104,92 Z"
+                style="--l:180;--d:1.2s;--dl:1.8s" />
+            <!-- Spine -->
+            <line class="dp" x1="70" y1="38" x2="70" y2="88" style="--l:50;--d:0.5s;--dl:2.5s" />
+            <!-- Left page lines -->
+            <line class="dp" x1="44" y1="55" x2="64" y2="51" style="--l:22;--d:0.25s;--dl:2.9s" />
+            <line class="dp" x1="44" y1="63" x2="64" y2="59" style="--l:22;--d:0.25s;--dl:3.05s" />
+            <line class="dp" x1="44" y1="71" x2="64" y2="67" style="--l:22;--d:0.25s;--dl:3.2s" />
+            <!-- Right page lines -->
+            <line class="dp" x1="76" y1="51" x2="96" y2="55" style="--l:22;--d:0.25s;--dl:3.35s" />
+            <line class="dp" x1="76" y1="59" x2="96" y2="63" style="--l:22;--d:0.25s;--dl:3.5s" />
+            <line class="dp" x1="76" y1="67" x2="96" y2="71" style="--l:22;--d:0.25s;--dl:3.65s" />
+        </svg>
+        <div class="sp-t">Santosh Bhavan</div>
+        <div class="sp-s">Class 10 &bull; Student Management</div>
+        <div class="sp-bar">
+            <div class="sp-fill"></div>
+        </div>
+    </div>
+
+    <!-- ===== APP ===== -->
+    <div id="app" style="display:none">
+        <div class="hdr">
+            <h1>📘 Santosh Bhavan</h1>
+            <small id="hDate"></small>
+        </div>
+        <div class="main" id="mc"></div>
+        <button class="fab" id="fab" onclick="handleFab()">+</button>
+        <div class="bnav">
+            <button class="nb act" onclick="sTab('daily',this)" id="nd"><span class="ic">📝</span><span>Daily
+                    Log</span></button>
+            <button class="nb" onclick="sTab('exams',this)" id="ne"><span
+                    class="ic">📚</span><span>Exams</span></button>
+            <button class="nb" onclick="sTab('seva',this)" id="ns"><span class="ic">👥</span><span>Class
+                    Hub</span></button>
+        </div>
+    </div>
+
+    <!-- ===== MODAL ===== -->
+    <div class="mo" id="mo" onclick="if(event.target===this)cModal()">
+        <div class="modal" id="mbox"></div>
+    </div>
+
+    <script>
+        // ===== CONSTANTS =====
+        const SUBS = [
+            { key: 'hindi', name: 'Hindi', clr: '#C47B6B', bg: '#FAF0ED' },
+            { key: 'english', name: 'English', clr: '#5B8FB9', bg: '#EDF4F9' },
+            { key: 'science', name: 'Science', clr: '#5DA87E', bg: '#EDF6F1' },
+            { key: 'sst', name: 'SST', clr: '#B8976A', bg: '#F7F1E9' },
+            { key: 'math', name: 'Math', clr: '#8B7BB8', bg: '#F0EDF8' },
+            { key: 'sanskrit', name: 'Sanskrit', clr: '#4BA8A0', bg: '#ECF6F5' }
+        ];
+
+        // ===== STATE =====
+        let ct = 'daily', cv = 'list', cs = 'students', tmpSyl = {}, atT = null;
+
+        // ===== DATA LAYER =====
+        const LS = {
+            g: (k) => { try { return JSON.parse(localStorage.getItem(k)) } catch { return null } },
+            s: (k, v) => localStorage.setItem(k, JSON.stringify(v))
+        };
+        const gD = () => LS.g('sb_d') || [];
+        const sD = d => LS.s('sb_d', d);
+        const gH = () => LS.g('sb_h') || {};
+        const sH = d => LS.s('sb_h', d);
+        const gE = () => LS.g('sb_e') || [];
+        const sE = d => LS.s('sb_e', d);
+        const gSt = () => LS.g('sb_s') || [];
+        const sSt = d => LS.s('sb_s', d);
+        const gM = () => LS.g('sb_m') || {};
+        const sM = d => LS.s('sb_m', d);
+        const uid = () => Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+
+        // ===== UTILS =====
+        function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML }
+        function fDate(s) { if (!s) return ''; const d = new Date(s + 'T00:00:00'); return d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) }
+        function fDateS(s) { if (!s) return ''; const d = new Date(s + 'T00:00:00'); return d.getDate() + '/' + (d.getMonth() + 1) + '/' + d.getFullYear() }
+        function today() { return new Date().toISOString().split('T')[0] }
+        function subC(k) { return (SUBS.find(s => s.key === k) || {}).clr || '#999' }
+        function subBg(k) { return (SUBS.find(s => s.key === k) || {}).bg || '#f5f5f5' }
+        function subN(k) { return (SUBS.find(s => s.key === k) || {}).name || k }
+        function toast(m) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = m; document.body.appendChild(t); setTimeout(() => t.remove(), 2500) }
+        function grade(p) { if (p >= 90) return { l: 'A+', c: 'bg-g' }; if (p >= 80) return { l: 'A', c: 'bg-g' }; if (p >= 70) return { l: 'B+', c: 'bg-b' }; if (p >= 60) return { l: 'B', c: 'bg-w' }; if (p >= 50) return { l: 'C', c: 'bg-w' }; if (p >= 33) return { l: 'D', c: 'bg-w' }; return { l: 'F', c: 'bg-r' } }
+
+        // ===== NAVIGATION =====
+        function sTab(t, btn) {
+            ct = t; cv = 'list';
+            document.querySelectorAll('.nb').forEach(b => b.classList.remove('act'));
+            if (btn) btn.classList.add('act');
+            document.getElementById('fab').style.display = t === 'seva' ? 'none' : 'flex';
+            render();
+        }
+        function handleFab() { cv = 'add'; render() }
+        function goB() { cv = 'list'; render() }
+
+        // ===== RENDER =====
+        function render() {
+            const mc = document.getElementById('mc');
+            mc.style.animation = 'none'; mc.offsetHeight; mc.style.animation = 'fadeIn .3s ease';
+            if (ct === 'daily') rDaily(mc);
+            else if (ct === 'exams') rExams(mc);
+            else rSeva(mc);
+        }
+
+        // ============================
+        // ===== DAILY LOG TAB =====
+        // ============================
+        function rDaily(mc) {
+            if (cv === 'list') rDList(mc);
+            else if (cv === 'add') rDAdd(mc);
+            else if (cv.startsWith('d:')) rDDetail(mc, cv.split(':')[1]);
+        }
+
+        function rDList(mc) {
+            const all = gD().sort((a, b) => b.date.localeCompare(a.date));
+            const hws = gH();
+            let h = `<div class="stit">📝 Daily Log</div>
+<div class="fbar">
+<input type="date" class="fc" id="df" value="${sessionStorage.getItem('df') || ''}" onchange="sessionStorage.setItem('df',this.value);render()" placeholder="Filter by date" style="font-size:.82rem">
+<button class="btn btn-sm btn-o" onclick="document.getElementById('df').value='';sessionStorage.removeItem('df');render()">✕</button>
+</div>`;
+            const fv = sessionStorage.getItem('df') || '';
+            const entries = fv ? all.filter(e => e.date === fv) : all;
+            if (entries.length === 0) {
+                h += `<div class="empty"><div class="eic">${fv ? '🔍' : '📝'}</div><p>${fv ? 'No entries found for this date' : 'No daily entries yet'}</p><small>${fv ? 'Try a different date' : 'Tap + to add your first entry'}</small></div>`;
+                mc.innerHTML = h; return;
+            }
+            entries.forEach((e, i) => {
+                const hwT = e.periods.filter(p => p.hw && p.hw.trim()).length;
+                const hwD = e.periods.filter((p, j) => p.hw && p.hw.trim() && hws[e.id + '_' + j]).length;
+                const tags = e.periods.map(p => `<span class="tag" style="background:${subBg(p.sub)};color:${subC(p.sub)}">${subN(p.sub)}</span>`).join(' ');
+                h += `<div class="card click" onclick="cv='d:${e.id}';render()" style="animation-delay:${i * .04}s">
+<div class="card-h"><div class="card-t">${fDate(e.date)}</div><div class="card-d">${e.periods.length} period${e.periods.length > 1 ? 's' : ''}</div></div>
+<div style="margin:6px 0;display:flex;flex-wrap:wrap;gap:4px">${tags}</div>
+${hwT > 0 ? `<div style="display:flex;align-items:center;gap:6px;margin-top:6px"><div class="pbar" style="flex:1;height:4px"><div class="pfill" style="width:${hwT ? hwD / hwT * 100 : 0}%;background:${hwD === hwT ? 'var(--suc)' : 'var(--p)'}"></div></div><span style="font-size:.7rem;color:var(--t2)">${hwD}/${hwT} done</span></div>` : ''}
+</div>`;
+            });
+            mc.innerHTML = h;
+        }
+
+        function rDAdd(mc) {
+            let h = `<button class="back" onclick="goB()">← Back to list</button>
+<div class="stit">➕ New Daily Entry</div>
+<div class="card">
+<div class="fg"><label>📅 Date</label><input type="date" class="fc" id="aDate" value="${today()}"></div>
+<div class="fg"><label>🔢 Number of Periods</label><select class="fc" id="aPer" onchange="genPF()"><option value="">-- Select --</option>`;
+            for (let i = 1; i <= 10; i++)h += `<option value="${i}">${i} Period${i > 1 ? 's' : ''}</option>`;
+            h += `</select></div></div><div id="pf"></div><div id="sa"></div>`;
+            mc.innerHTML = h;
+        }
+
+        function genPF() {
+            const n = parseInt(document.getElementById('aPer').value) || 0;
+            if (!n) { document.getElementById('pf').innerHTML = ''; document.getElementById('sa').innerHTML = ''; return }
+            let h = '';
+            for (let i = 1; i <= n; i++) {
+                h += `<div class="card" style="animation-delay:${i * .04}s">
+<div class="pn" style="color:var(--p)">📖 Period ${i}</div>
+<div class="fg"><label>Subject</label><select class="fc" id="sub${i}"><option value="">-- Choose Subject --</option>`;
+                SUBS.forEach(s => { h += `<option value="${s.key}">${s.name}</option>` });
+                h += `</select></div>
+<div class="fg"><label>📋 Classwork</label><textarea class="fc" id="cw${i}" placeholder="What was taught today..."></textarea></div>
+<div class="fg"><label>📝 Homework</label><textarea class="fc" id="hw${i}" placeholder="Homework assigned..."></textarea></div></div>`;
+            }
+            document.getElementById('pf').innerHTML = h;
+            document.getElementById('sa').innerHTML = `<button class="btn btn-p btn-bl" onclick="saveD()" style="margin-top:8px">💾 Save Entry</button>`;
+        }
+
+        function saveD() {
+            const date = document.getElementById('aDate').value;
+            const n = parseInt(document.getElementById('aPer').value) || 0;
+            if (!date) { toast('⚠️ Please select a date'); return }
+            if (!n) { toast('⚠️ Select number of periods'); return }
+            const periods = [];
+            for (let i = 1; i <= n; i++) {
+                const sub = document.getElementById('sub' + i).value;
+                if (!sub) { toast('⚠️ Select subject for Period ' + i); return }
+                periods.push({ sub, cw: document.getElementById('cw' + i).value.trim(), hw: document.getElementById('hw' + i).value.trim() });
+            }
+            const d = gD(); d.push({ id: uid(), date, periods, ts: Date.now() }); sD(d);
+            toast('✅ Entry saved!'); cv = 'list'; render();
+        }
+
+        function rDDetail(mc, id) {
+            const e = gD().find(x => x.id === id);
+            if (!e) { cv = 'list'; render(); return }
+            const hws = gH();
+            let h = `<button class="back" onclick="goB()">← Back to list</button>
+<div class="card"><div class="card-h"><div class="card-t">${fDate(e.date)}</div><div class="card-d">${e.periods.length} period${e.periods.length > 1 ? 's' : ''}</div></div></div>`;
+            e.periods.forEach((p, i) => {
+                const done = hws[e.id + '_' + i] || false;
+                h += `<div class="pc" style="border-left-color:${subC(p.sub)};animation-delay:${i * .05}s">
+<div class="pn"><span class="tag" style="background:${subBg(p.sub)};color:${subC(p.sub)}">${subN(p.sub)}</span> Period ${i + 1}</div>`;
+                if (p.cw) h += `<div style="margin:7px 0"><div style="font-size:.72rem;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.5px">Classwork</div><div style="font-size:.83rem;margin-top:4px;padding:8px 10px;background:#fff;border-radius:8px;line-height:1.5">${esc(p.cw).replace(/\n/g, '<br>')}</div></div>`;
+                if (p.hw) h += `<div class="hwi" onclick="tHW('${e.id}',${i})">
+<div class="hwc ${done ? 'done' : ''}">${done ? '✓' : ''}</div>
+<div class="hwt ${done ? 'comp' : ''}">
+<div style="font-size:.7rem;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.5px">Homework</div>
+<div style="font-size:.83rem;margin-top:3px;line-height:1.5">${esc(p.hw).replace(/\n/g, '<br>')}</div></div></div>`;
+                if (!p.cw && !p.hw) h += `<div style="font-size:.8rem;color:var(--t2);padding:4px 0">No classwork/homework recorded</div>`;
+                h += `</div>`;
+            });
+            h += `<div style="margin-top:16px;text-align:center"><button class="btn btn-d btn-sm" onclick="delD('${e.id}')">🗑️ Delete Entry</button></div>`;
+            mc.innerHTML = h;
+        }
+
+        function tHW(eid, idx) { const h = gH(); const k = eid + '_' + idx; h[k] = !h[k]; sH(h); render(); toast(h[k] ? '✅ Homework done!' : '↩️ Unmarked') }
+        function delD(id) { if (!confirm('Delete this entry?')) return; sD(gD().filter(e => e.id !== id)); toast('🗑️ Entry deleted'); cv = 'list'; render() }
+
+        // ========================
+        // ===== EXAMS TAB =====
+        // ========================
+        function rExams(mc) {
+            if (cv === 'list') rEList(mc);
+            else if (cv === 'add') rEAdd(mc);
+            else if (cv.startsWith('ed:')) rEDetail(mc, cv.split(':')[1]);
+            else if (cv.startsWith('ee:')) rEEdit(mc, cv.split(':')[1]);
+        }
+
+        function rEList(mc) {
+            const exams = gE();
+            if (!exams.length) { mc.innerHTML = `<div class="stit">📚 Exams</div><div class="empty"><div class="eic">📚</div><p>No exams added yet</p><small>Tap + to add your first exam</small></div>`; return }
+            let h = '<div class="stit">📚 Exams</div>';
+            exams.forEach((e, i) => {
+                const sylC = SUBS.filter(s => e.syl && e.syl[s.key] && e.syl[s.key].length).length;
+                h += `<div class="card click" onclick="cv='ed:${e.id}';render()" style="animation-delay:${i * .04}s">
+<div class="card-h"><div class="card-t">📖 ${esc(e.name)}</div><span class="badge ${sylC === 6 ? 'bg-g' : 'bg-w'}">${sylC}/6 subjects</span></div>
+<div style="font-size:.76rem;color:var(--t2)">Max: ${e.maxM || 100} per subject &bull; Syllabus ${sylC === 6 ? 'complete ✓' : 'incomplete'}</div></div>`;
+            });
+            mc.innerHTML = h;
+        }
+
+        function rEAdd(mc) {
+            tmpSyl = {};
+            SUBS.forEach(s => tmpSyl[s.key] = []);
+            let h = `<button class="back" onclick="goB()">← Back to list</button>
+<div class="stit">➕ Add New Exam</div>
+<div class="card">
+<div class="fg"><label>📝 Exam Name</label><input type="text" class="fc" id="eName" placeholder="e.g. Half Yearly Exam"></div>
+<div class="fg"><label>💯 Maximum Marks (per subject)</label><input type="number" class="fc" id="eMax" value="100" placeholder="100"></div>
+</div>
+<div class="stit" style="font-size:.92rem;margin-top:8px">📋 Syllabus Points</div>
+<p style="font-size:.76rem;color:var(--t2);margin:-8px 0 12px">Type a point → Press Enter to add → Tab to next subject</p>`;
+            SUBS.forEach(s => {
+                h += `<div class="card" style="border-top:3px solid ${s.clr}">
+<div style="font-weight:700;font-size:.85rem;color:${s.clr};margin-bottom:8px">${s.name}</div>
+<div class="syl-pts" id="sp_${s.key}"></div>
+<div style="display:flex;gap:6px"><input type="text" class="fc" id="si_${s.key}" placeholder="Type point & press Enter..." onkeydown="sylK(event,'${s.key}')" style="flex:1;margin:0">
+<button class="btn btn-sm btn-p" onclick="addSP('${s.key}')" tabindex="-1" style="padding:7px 12px">+</button></div></div>`;
+            });
+            h += `<button class="btn btn-p btn-bl" onclick="saveE()" style="margin-top:10px">💾 Save Exam</button>`;
+            mc.innerHTML = h;
+        }
+
+        function sylK(e, k) { if (e.key === 'Enter') { e.preventDefault(); addSP(k) } }
+        function addSP(k) {
+            const inp = document.getElementById('si_' + k);
+            const v = inp.value.trim();
+            if (!v) return;
+            tmpSyl[k] = tmpSyl[k] || [];
+            tmpSyl[k].push(v);
+            inp.value = '';
+            rSP(k);
+            inp.focus();
+        }
+        function rmSP(k, i) { tmpSyl[k].splice(i, 1); rSP(k) }
+        function rSP(k) {
+            const c = document.getElementById('sp_' + k);
+            if (!c) return;
+            let h = '';
+            (tmpSyl[k] || []).forEach((p, i) => {
+                h += `<div class="syl-pt"><div class="dot" style="background:${subC(k)}"></div><span>${esc(p)}</span><button class="xb" onclick="rmSP('${k}',${i})" tabindex="-1">✕</button></div>`;
+            });
+            c.innerHTML = h;
+        }
+
+        function saveE() {
+            const name = document.getElementById('eName').value.trim();
+            const maxM = parseInt(document.getElementById('eMax').value) || 100;
+            if (!name) { toast('⚠️ Enter exam name'); return }
+            const exams = gE();
+            exams.push({ id: uid(), name, maxM, syl: { ...tmpSyl }, ts: Date.now() });
+            sE(exams); toast('✅ Exam saved!'); cv = 'list'; render();
+        }
+
+        function rEDetail(mc, id) {
+            const e = gE().find(x => x.id === id);
+            if (!e) { cv = 'list'; render(); return }
+            let h = `<button class="back" onclick="goB()">← Back to list</button>
+<div class="card"><div class="card-h"><div class="card-t">📖 ${esc(e.name)}</div><div class="card-d">Max: ${e.maxM || 100}</div></div></div>
+<div class="stit" style="font-size:.92rem">📋 Syllabus</div>`;
+            SUBS.forEach(s => {
+                const pts = e.syl && e.syl[s.key] ? e.syl[s.key] : [];
+                h += `<div class="syl-v" style="border-left-color:${s.clr}">
+<div class="syl-v-h"><span class="tag" style="background:${s.bg};color:${s.clr}">${s.name}</span><span style="font-size:.7rem;color:var(--t2)">${pts.length} point${pts.length !== 1 ? 's' : ''}</span></div>`;
+                if (pts.length) { h += `<ul class="syl-v-pts">`; pts.forEach(p => { h += `<li style="color:var(--txt)"><span style="position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:${s.clr}"></span>${esc(p)}</li>` }); h += `</ul>` }
+                else h += `<div style="font-size:.78rem;color:var(--t2);padding:2px 0">No syllabus added</div>`;
+                h += `</div>`;
+            });
+            h += `<div style="margin-top:14px;display:flex;gap:8px;justify-content:center">
+<button class="btn btn-s btn-sm" onclick="startEEdit('${e.id}')">✏️ Edit</button>
+<button class="btn btn-d btn-sm" onclick="delE('${e.id}')">🗑️ Delete</button></div>`;
+            mc.innerHTML = h;
+        }
+
+        function startEEdit(id) {
+            const e = gE().find(x => x.id === id);
+            if (!e) return;
+            tmpSyl = {};
+            SUBS.forEach(s => { tmpSyl[s.key] = e.syl && e.syl[s.key] ? [...e.syl[s.key]] : [] });
+            cv = 'ee:' + id; render();
+        }
+
+        function rEEdit(mc, id) {
+            const e = gE().find(x => x.id === id);
+            if (!e) { cv = 'list'; render(); return }
+            let h = `<button class="back" onclick="cv='ed:${id}';render()">← Back to details</button>
+<div class="stit">✏️ Edit Exam</div>
+<div class="card">
+<div class="fg"><label>📝 Exam Name</label><input type="text" class="fc" id="eName" value="${esc(e.name)}"></div>
+<div class="fg"><label>💯 Maximum Marks</label><input type="number" class="fc" id="eMax" value="${e.maxM || 100}"></div></div>
+<div class="stit" style="font-size:.92rem">📋 Syllabus Points</div>`;
+            SUBS.forEach(s => {
+                h += `<div class="card" style="border-top:3px solid ${s.clr}">
+<div style="font-weight:700;font-size:.85rem;color:${s.clr};margin-bottom:8px">${s.name}</div>
+<div class="syl-pts" id="sp_${s.key}"></div>
+<div style="display:flex;gap:6px"><input type="text" class="fc" id="si_${s.key}" placeholder="Type point & press Enter..." onkeydown="sylK(event,'${s.key}')" style="flex:1;margin:0">
+<button class="btn btn-sm btn-p" onclick="addSP('${s.key}')" tabindex="-1" style="padding:7px 12px">+</button></div></div>`;
+            });
+            h += `<button class="btn btn-p btn-bl" onclick="updE('${id}')" style="margin-top:10px">💾 Update Exam</button>`;
+            mc.innerHTML = h;
+            SUBS.forEach(s => rSP(s.key));
+        }
+
+        function updE(id) {
+            const name = document.getElementById('eName').value.trim();
+            const maxM = parseInt(document.getElementById('eMax').value) || 100;
+            if (!name) { toast('⚠️ Enter exam name'); return }
+            const exams = gE(); const idx = exams.findIndex(x => x.id === id);
+            if (idx >= 0) { exams[idx].name = name; exams[idx].maxM = maxM; exams[idx].syl = { ...tmpSyl }; sE(exams) }
+            toast('✅ Exam updated!'); cv = 'ed:' + id; render();
+        }
+
+        function delE(id) {
+            if (!confirm('Delete this exam and all its marks?')) return;
+            sE(gE().filter(e => e.id !== id));
+            const m = gM(); delete m[id]; sM(m);
+            toast('🗑️ Exam deleted'); cv = 'list'; render();
+        }
+
+        // ============================
+        // ===== CLASS HUB TAB =====
+        // ============================
+        function rSeva(mc) {
+            let h = `<div class="stit">👥 Class Hub</div>
+<div class="stabs">
+<button class="stab ${cs === 'students' ? 'act' : ''}" onclick="cs='students';render()">👤 Students</button>
+<button class="stab ${cs === 'marks' ? 'act' : ''}" onclick="cs='marks';render()">📝 Enter Marks</button>
+<button class="stab ${cs === 'results' ? 'act' : ''}" onclick="cs='results';render()">📊 Results</button>
+</div><div id="sc"></div>`;
+            mc.innerHTML = h;
+            const sc = document.getElementById('sc');
+            if (cs === 'students') rStudents(sc);
+            else if (cs === 'marks') rMarks(sc);
+            else rResults(sc);
+        }
+
+        // --- Students ---
+        function rStudents(sc) {
+            const stu = gSt().sort((a, b) => a.roll - b.roll);
+            let h = `<button class="btn btn-p btn-bl" onclick="showAddSt()" style="margin-bottom:14px">➕ Add New Student</button>`;
+            if (!stu.length) { h += `<div class="empty"><div class="eic">👤</div><p>No students added yet</p><small>Add students using the button above</small></div>`; sc.innerHTML = h; return }
+            h += `<div style="font-size:.76rem;color:var(--t2);margin-bottom:10px">Total: ${stu.length} students</div>`;
+            stu.forEach((s, i) => {
+                h += `<div class="si" style="animation-delay:${i * .03}s">
+<div class="si-info"><div class="si-av">${s.roll}</div><div><div class="si-n">${esc(s.name)}</div><div class="si-d">F: ${esc(s.fname || '—')} &bull; Roll #${s.roll}</div></div></div>
+<button class="dbtn" onclick="delSt('${s.id}')" title="Delete">🗑️</button></div>`;
+            });
+            sc.innerHTML = h;
+        }
+
+        function showAddSt() {
+            document.getElementById('mbox').innerHTML = `
+<h3>➕ Add New Student</h3>
+<div class="fg"><label>👤 Student Name</label><input type="text" class="fc" id="stN" placeholder="Full name"></div>
+<div class="fg"><label>👨 Father's Name</label><input type="text" class="fc" id="stF" placeholder="Father's name"></div>
+<div class="fg"><label>🔢 Roll Number</label><input type="number" class="fc" id="stR" placeholder="Roll number"></div>
+<div style="display:flex;gap:8px;margin-top:4px"><button class="btn btn-p" onclick="addSt()">Add Student</button><button class="btn btn-o" onclick="cModal()">Cancel</button></div>`;
+            document.getElementById('mo').classList.add('show');
+            setTimeout(() => document.getElementById('stN').focus(), 100);
+        }
+
+        function addSt() {
+            const name = document.getElementById('stN').value.trim();
+            const fname = document.getElementById('stF').value.trim();
+            const roll = parseInt(document.getElementById('stR').value);
+            if (!name) { toast('⚠️ Enter student name'); return }
+            if (isNaN(roll)) { toast('⚠️ Enter roll number'); return }
+            const stu = gSt();
+            if (stu.find(s => s.roll === roll)) { toast('⚠️ Roll number already exists'); return }
+            stu.push({ id: uid(), name, fname, roll }); sSt(stu);
+            cModal(); toast('✅ Student added!'); render();
+        }
+
+        function delSt(id) { if (!confirm('Remove this student?')) return; sSt(gSt().filter(s => s.id !== id)); toast('🗑️ Student removed'); render() }
+
+        // --- Marks Entry ---
+        function rMarks(sc) {
+            const exams = gE(), stu = gSt().sort((a, b) => a.roll - b.roll);
+            if (!exams.length) { sc.innerHTML = `<div class="empty"><div class="eic">📚</div><p>Add exams first in the Exams tab</p></div><button class="btn btn-p btn-bl" onclick="showQE()">➕ Quick Add Exam</button>`; return }
+            if (!stu.length) { sc.innerHTML = `<div class="empty"><div class="eic">👤</div><p>Add students first using the Students tab</p></div>`; return }
+            const marks = gM();
+            let h = `<div class="fg"><label>📚 Select Exam</label><select class="fc" id="mExam" onchange="loadMF()"><option value="">-- Choose Exam --</option>`;
+            exams.forEach(e => { h += `<option value="${e.id}">${esc(e.name)} (Max: ${e.maxM || 100})</option>` });
+            h += `</select></div><div id="mfa"></div>`;
+            sc.innerHTML = h;
+        }
+
+        function loadMF() {
+            const eid = document.getElementById('mExam').value;
+            const area = document.getElementById('mfa');
+            if (!eid) { area.innerHTML = ''; return }
+            const stu = gSt().sort((a, b) => a.roll - b.roll);
+            const marks = gM(); const em = marks[eid] || {};
+            const exam = gE().find(e => e.id === eid);
+            const maxM = exam ? exam.maxM || 100 : 100;
+            let mi = 0;
+            let h = `<div style="font-size:.76rem;color:var(--t2);margin-bottom:10px;display:flex;align-items:center;gap:5px">
+<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--p);animation:pulse2 2s infinite"></span>
+Auto-advance enabled &bull; Max: ${maxM} per subject</div>`;
+            stu.forEach((s, si) => {
+                const sm = em[s.id] || {};
+                h += `<div class="mc" style="animation-delay:${si * .03}s"><div class="mc-h"><div class="mc-n">${esc(s.name)}</div><div class="mc-r">Roll ${s.roll}</div></div><div class="mg">`;
+                SUBS.forEach(sub => {
+                    h += `<div class="mgi"><label style="color:${sub.clr}">${sub.name}</label>
+<input type="number" inputmode="numeric" min="0" max="${maxM}" data-mi="${mi}" data-max="${maxM}" id="mk_${s.id}_${sub.key}" value="${sm[sub.key] !== undefined ? sm[sub.key] : ''}" placeholder="0" oninput="onMI(this)" onfocus="this.select()"></div>`;
+                    mi++;
+                });
+                h += `</div></div>`;
+            });
+            h += `<button class="btn btn-a btn-bl" onclick="saveMD('${eid}')" style="margin-top:10px">💾 Save All Marks</button>`;
+            area.innerHTML = h;
+        }
+
+        function onMI(el) {
+            clearTimeout(atT);
+            const max = parseInt(el.dataset.max);
+            let v = el.value;
+            if (!v) return;
+            let n = parseInt(v) || 0;
+            if (n > max) { el.value = max; n = max; v = String(max) }
+            if (n < 0) { el.value = 0; v = '0' }
+            if (v === '0' || parseInt(v + '0') > max) {
+                atT = setTimeout(() => advM(el), 80);
+            } else {
+                atT = setTimeout(() => advM(el), 600);
+            }
+        }
+
+        function advM(el) {
+            const idx = parseInt(el.dataset.mi);
+            const next = document.querySelector(`[data-mi="${idx + 1}"]`);
+            if (next) { next.focus(); next.select() }
+        }
+
+        function saveMD(eid) {
+            const stu = gSt(); const marks = gM(); const exam = gE().find(e => e.id === eid);
+            const maxM = exam ? exam.maxM || 100 : 100;
+            marks[eid] = {};
+            stu.forEach(s => {
+                const sm = {};
+                SUBS.forEach(sub => {
+                    const el = document.getElementById('mk_' + s.id + '_' + sub.key);
+                    let v = el ? parseInt(el.value) : 0;
+                    if (isNaN(v)) v = 0;
+                    if (v > maxM) v = maxM;
+                    if (v < 0) v = 0;
+                    sm[sub.key] = v;
+                });
+                marks[eid][s.id] = sm;
+            });
+            sM(marks); toast('✅ Marks saved successfully!');
+        }
+
+        function showQE() {
+            document.getElementById('mbox').innerHTML = `
+<h3>➕ Quick Add Exam</h3>
+<div class="fg"><label>📝 Exam Name</label><input type="text" class="fc" id="qEN" placeholder="e.g. Unit Test 1"></div>
+<div class="fg"><label>💯 Max Marks per Subject</label><input type="number" class="fc" id="qEM" value="100" placeholder="100"></div>
+<div style="display:flex;gap:8px;margin-top:4px"><button class="btn btn-p" onclick="addQE()">Add</button><button class="btn btn-o" onclick="cModal()">Cancel</button></div>`;
+            document.getElementById('mo').classList.add('show');
+        }
+
+        function addQE() {
+            const name = document.getElementById('qEN').value.trim();
+            const maxM = parseInt(document.getElementById('qEM').value) || 100;
+            if (!name) { toast('⚠️ Enter exam name'); return }
+            const exams = gE(); exams.push({ id: uid(), name, maxM, syl: {}, ts: Date.now() }); sE(exams);
+            cModal(); toast('✅ Exam added!'); render();
+        }
+
+        // --- Results ---
+        function rResults(sc) {
+            const exams = gE(), stu = gSt();
+            if (!exams.length || !stu.length) { sc.innerHTML = `<div class="empty"><div class="eic">📊</div><p>${!exams.length ? 'Add exams first' : 'Add students first'}</p></div>`; return }
+            let h = `<div class="fg"><label>📚 Select Exam</label><select class="fc" id="rExam" onchange="showRes()"><option value="">-- Choose Exam --</option>`;
+            exams.forEach(e => { h += `<option value="${e.id}">${esc(e.name)}</option>` });
+            h += `</select></div><div id="ra"></div>`;
+            sc.innerHTML = h;
+        }
+
+        function showRes() {
+            const eid = document.getElementById('rExam').value;
+            const area = document.getElementById('ra');
+            if (!eid) { area.innerHTML = ''; return }
+            const stu = gSt(); const marks = gM(); const em = marks[eid] || {};
+            const exam = gE().find(e => e.id === eid);
+            const maxM = exam ? exam.maxM || 100 : 100;
+            const totalMax = maxM * 6;
+
+            let results = stu.map(s => {
+                const sm = em[s.id] || {};
+                let total = 0; const subM = {};
+                SUBS.forEach(sub => { const v = sm[sub.key] || 0; subM[sub.key] = v; total += v });
+                return { ...s, marks: subM, total, pct: totalMax ? (total / totalMax * 100) : 0 };
+            }).sort((a, b) => b.pct - a.pct);
+
+            let rank = 0, prevP = -1;
+            results.forEach((r, i) => { if (r.pct !== prevP) { rank = i + 1; prevP = r.pct } r.rank = rank });
+
+            if (results.every(r => r.total === 0)) { area.innerHTML = `<div class="empty"><div class="eic">📝</div><p>No marks entered for this exam yet</p><small>Go to "Enter Marks" tab to add marks</small></div>`; return }
+
+            const avgP = results.reduce((a, r) => a + r.pct, 0) / results.length;
+            const passC = results.filter(r => r.pct >= 33).length;
+
+            let h = `<div class="g3">
+<div class="stat"><div class="stat-n">${results.length}</div><div class="stat-l">Students</div></div>
+<div class="stat"><div class="stat-n">${avgP.toFixed(1)}%</div><div class="stat-l">Average</div></div>
+<div class="stat"><div class="stat-n">${passC}/${results.length}</div><div class="stat-l">Passed</div></div></div>`;
+
+            // Top 3
+            const top3 = results.filter(r => r.rank <= 3 && r.total > 0);
+            if (top3.length > 0) {
+                h += `<div class="card" style="background:linear-gradient(135deg,#FAFBFC,#F0F4F8);text-align:center">
+<div style="font-weight:700;color:var(--s);margin-bottom:12px;font-size:.9rem">🏆 Top Performers</div>
+<div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap">`;
+                top3.forEach(r => {
+                    const medal = r.rank === 1 ? '🥇' : r.rank === 2 ? '🥈' : '🥉';
+                    h += `<div style="text-align:center;animation:scaleIn .4s ease both"><div style="font-size:2rem">${medal}</div>
+<div style="font-weight:700;font-size:.85rem;margin-top:4px">${esc(r.name)}</div>
+<div style="font-size:.78rem;color:var(--p);font-weight:700">${r.pct.toFixed(1)}%</div>
+<div style="font-size:.68rem;color:var(--t2)">${r.total}/${totalMax}</div></div>`;
+                });
+                h += `</div></div>`;
+            }
+
+            // Table
+            h += `<div class="tw"><table class="rtbl"><thead><tr><th>Rank</th><th>Name</th><th>Roll</th><th>Father</th>`;
+            SUBS.forEach(s => { h += `<th style="background:${s.clr}">${s.name}</th>` });
+            h += `<th>Total</th><th>%</th><th>Grade</th></tr></thead><tbody>`;
+            results.forEach(r => {
+                const g = grade(r.pct);
+                const medal = r.rank <= 3 ? ['', '🥇', '🥈', '🥉'][r.rank] : '';
+                const rowBg = r.rank <= 3 ? `background:${['', '#FFFDE7', '#F5F5F5', '#FFF3E0'][r.rank]}` : '';
+                h += `<tr style="${rowBg}"><td><strong>${medal}${r.rank}</strong></td><td style="text-align:left;font-weight:600;white-space:nowrap">${esc(r.name)}</td><td>${r.roll}</td><td style="text-align:left;font-size:.72rem;white-space:nowrap">${esc(r.fname || '—')}</td>`;
+                SUBS.forEach(s => {
+                    const v = r.marks[s.key];
+                    const pctS = maxM ? (v / maxM * 100) : 0;
+                    h += `<td style="color:${pctS < 33 ? 'var(--dan)' : pctS >= 80 ? 'var(--suc)' : 'inherit'};font-weight:${pctS >= 80 ? '700' : '400'}">${v}</td>`;
+                });
+                const pClr = r.pct >= 75 ? 'var(--suc)' : r.pct >= 50 ? 'var(--aw)' : r.pct >= 33 ? '#C47B6B' : 'var(--dan)';
+                h += `<td><strong>${r.total}</strong></td><td style="color:${pClr};font-weight:700">${r.pct.toFixed(1)}%</td>
+<td><span class="badge ${g.c}">${g.l}</span></td></tr>`;
+            });
+            h += `</tbody></table></div>`;
+
+            // Detail cards
+            h += `<div class="stit" style="margin-top:8px">📋 Detailed Report Cards</div>`;
+            results.forEach((r, i) => {
+                const medal = r.rank <= 3 ? ['', '🥇', '🥈', '🥉'][r.rank] : '';
+                const g = grade(r.pct);
+                const pClr = r.pct >= 75 ? 'var(--suc)' : r.pct >= 50 ? 'var(--aw)' : r.pct >= 33 ? '#C47B6B' : 'var(--dan)';
+                h += `<div class="card" style="animation-delay:${i * .03}s">
+<div class="card-h"><div class="card-t">${medal} ${esc(r.name)}</div><div class="card-d">Rank #${r.rank}</div></div>
+<div style="font-size:.76rem;color:var(--t2);margin-bottom:4px">Roll: ${r.roll} &bull; Father: ${esc(r.fname || '—')}</div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+<span style="font-weight:700;font-size:1.1rem;color:${pClr}">${r.pct.toFixed(1)}%</span>
+<span class="badge ${g.c}">${g.l}</span>
+<span style="font-size:.72rem;color:var(--t2)">${r.total}/${totalMax}</span></div>
+<div class="pbar"><div class="pfill" style="width:${r.pct}%;background:${pClr}"></div></div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">`;
+                SUBS.forEach(s => {
+                    const v = r.marks[s.key];
+                    const sp = maxM ? (v / maxM * 100) : 0;
+                    h += `<div style="flex:1;min-width:65px;text-align:center;padding:7px 4px;background:${s.bg};border-radius:8px;border-top:2.5px solid ${s.clr}">
+<div style="font-size:.62rem;color:${s.clr};font-weight:600">${s.name}</div>
+<div style="font-weight:700;font-size:1rem;color:${sp < 33 ? 'var(--dan)' : sp >= 80 ? 'var(--suc)' : 'var(--txt)'}">${v}</div></div>`;
+                });
+                h += `</div></div>`;
+            });
+            h += `</div>`;
+            area.innerHTML = h;
+        }
+
+        function cModal() {
+            document.getElementById('mo').classList.remove('show');
+        }
+
+        // ===== INIT =====
+        function initApp() {
+            document.getElementById('hDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            
+            // Hide splash after animation (6s + 1.2s transition)
+            setTimeout(() => {
+                document.getElementById('splash').classList.add('hide');
+                document.getElementById('app').style.display = 'block';
+                setTimeout(render, 100); // Small delay for smooth transition
+            }, 6200);
+        }
+
+        // Start app when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
+    </script>
+</body>
+
+</html>
